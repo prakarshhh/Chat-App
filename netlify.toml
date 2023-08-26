@@ -1,0 +1,6 @@
+[build]
+  command = "npm run-script"  # Modify this to match your build script
+  publish = "public"        # Modify this to match your build output directory
+
+[settings]
+  NODE_VERSION = "19.7.0"       # Modify the Node.js version if needed
