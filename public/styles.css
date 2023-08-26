@@ -1,0 +1,92 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a background color for the entire page */
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the chat container */
+.chat-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Style the chat header */
+.chat-header {
+  background-color: #25d366;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Style the chat messages container */
+.chat-messages {
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+/* Style individual chat messages */
+.message {
+  background-color: #e1ffc7;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+/* Style the chat input */
+.chat-input {
+  display: flex;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+/* Style the message input field */
+#message-input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+/* Style the send button */
+#send-button {
+  background-color: #25d366;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Style sender's name */
+.sender-name {
+  font-weight: bold;
+  color: #0073e6;
+  /* You can choose a color for sender names */
+}
+
+/* Style the message text */
+.message-text {
+  background-color: #e1ffc7;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+/* Style the send button on hover */
+#send-button:hover {
+  background-color: #128c7e;
+}
