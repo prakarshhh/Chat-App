@@ -15,12 +15,22 @@ const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatMessages = document.querySelector('.chat-messages');
 
-// Event listener for the send button
-sendButton.addEventListener('click', () => {
+// Function to send a message
+function sendMessage() {
   const message = messageInput.value;
   if (message.trim() !== '') {
     socket.emit('chat message', { sender: senderName, message });
     messageInput.value = '';
+  }
+}
+
+// Event listener for the send button
+sendButton.addEventListener('click', sendMessage);
+
+// Event listener for the "Enter" key
+messageInput.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    sendMessage();
   }
 });
 
