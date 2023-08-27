@@ -1,15 +1,10 @@
 const socket = io();
 
-let senderName = prompt("Please enter your name:"); // Prompt for the sender's name
+let senderName = prompt("Please enter your name:");
 
-// Validate the sender's name (you can add more validation as needed)
 while (!senderName || senderName.trim() === "") {
   senderName = prompt("Name cannot be empty. Please enter your name:");
 }
-
-// Display the sender's name in the chat header
-const chatHeader = document.querySelector('.chat-header');
-chatHeader.textContent = `WhatsApp Clone - ${senderName}`;
 
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
@@ -24,6 +19,8 @@ function sendMessage() {
   }
 }
 
+
+
 // Event listener for the send button
 sendButton.addEventListener('click', sendMessage);
 
@@ -34,24 +31,34 @@ messageInput.addEventListener('keyup', (event) => {
   }
 });
 
+// Function to create and append a message to the appropriate container
+function appendMessage(message, className) {
+  const messageElement = document.createElement('div');
+  messageElement.textContent = message;
+  messageElement.classList.add('message-bubble', className);
+  chatMessages.appendChild(messageElement);
+}
+
 // Listen for incoming messages
 socket.on('chat message', (data) => {
+  const messageClassName = data.sender === senderName ? 'sent' : 'received';
   const messageElement = document.createElement('div');
-  messageElement.classList.add('message');
+  messageElement.classList.add('message-bubble', messageClassName);
 
   // Create a div for the sender's name
   const senderNameElement = document.createElement('div');
   senderNameElement.classList.add('sender-name');
-  senderNameElement.textContent = data.sender;
+  senderNameElement.innerHTML = `<strong>${data.sender}:</strong> `;
 
   // Create a div for the message text
   const messageTextElement = document.createElement('div');
   messageTextElement.classList.add('message-text');
   messageTextElement.textContent = data.message;
 
-  // Append sender's name and message text to the message container
+  // Append sender's name and message text to the message bubble
   messageElement.appendChild(senderNameElement);
   messageElement.appendChild(messageTextElement);
 
   chatMessages.appendChild(messageElement);
 });
+
